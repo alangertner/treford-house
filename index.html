@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24 Treford Place — Toronto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --concrete: #6b6b6b;
+            --concrete-light: #8a8a8a;
+            --wood: #a67c52;
+            --wood-warm: #c9a66b;
+            --garden: #4a5d45;
+            --garden-light: #6b8065;
+            --warm-white: #f5f3ef;
+            --warm-cream: #ebe7df;
+            --charcoal: #2d2d2d;
+            --soft-black: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--warm-white);
+            color: var(--charcoal);
+            line-height: 1.7;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            mix-blend-mode: difference;
+        }
+
+        nav .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: white;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        nav .nav-links a {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        nav .nav-links a:hover {
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.2) 0%,
+                rgba(0,0,0,0.1) 50%,
+                rgba(0,0,0,0.4) 100%
+            );
+        }
+
+        .hero-content {
+            position: absolute;
+            bottom: 12%;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-content .tagline {
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            opacity: 0.7;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: white;
+            animation: scroll-line 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-8px); }
+        }
+
+        @keyframes scroll-line {
+            0% { transform: scaleY(0); transform-origin: top; }
+            50% { transform: scaleY(1); transform-origin: top; }
+            50.1% { transform: scaleY(1); transform-origin: bottom; }
+            100% { transform: scaleY(0); transform-origin: bottom; }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 8rem 2rem;
+        }
+
+        .section-intro {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--concrete);
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 2.5rem;
+            color: var(--soft-black);
+            line-height: 1.2;
+        }
+
+        .section-text {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--concrete);
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* The Space Section */
+        .the-space {
+            background: var(--warm-white);
+        }
+
+        .space-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 6rem auto 0;
+        }
+
+        .space-image-large {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+        }
+
+        .space-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4rem;
+            padding: 4rem 0;
+        }
+
+        .detail-block h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--soft-black);
+        }
+
+        .detail-block p {
+            color: var(--concrete);
+            line-height: 1.9;
+        }
+
+        /* Dual Image Section */
+        .dual-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            max-width: 1600px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .dual-images img {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+        }
+
+        /* Full Bleed Image */
+        .full-bleed {
+            width: 100%;
+            height: 85vh;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--soft-black);
+            padding: 8rem 0;
+        }
+
+        .gallery .section-intro {
+            padding: 0 2rem;
+        }
+
+        .gallery .section-label {
+            color: var(--concrete-light);
+        }
+
+        .gallery .section-title {
+            color: var(--warm-white);
+        }
+
+        .gallery .section-text {
+            color: var(--concrete-light);
+        }
+
+        .gallery-scroll {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            padding: 5rem 2rem 3rem;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            cursor: grab;
+        }
+
+        .gallery-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-scroll:active {
+            cursor: grabbing;
+        }
+
+        .gallery-item {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+        }
+
+        .gallery-item img {
+            height: 65vh;
+            width: auto;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-hint {
+            text-align: center;
+            color: var(--concrete-light);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding-bottom: 2rem;
+        }
+
+        /* The Garden Section */
+        .the-garden {
+            background: var(--garden);
+            color: var(--warm-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .the-garden .section-label {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .the-garden .section-title {
+            color: var(--warm-white);
+        }
+
+        .the-garden .section-text {
+            color: rgba(255,255,255,0.85);
+        }
+
+        .garden-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            max-width: 1400px;
+            margin: 5rem auto 0;
+            padding: 0 2rem;
+        }
+
+        .garden-images img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+
+        .garden-feature {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 5rem;
+        }
+
+        .garden-feature img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .garden-feature-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem;
+            background: var(--garden-light);
+        }
+
+        .garden-feature-text h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .garden-feature-text p {
+            opacity: 0.9;
+            line-height: 1.9;
+        }
+
+        /* Neighbourhood Section */
+        .neighbourhood {
+            background: var(--warm-cream);
+        }
+
+        .neighbourhood-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .neighbourhood-text h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 2rem;
+            color: var(--soft-black);
+        }
+
+        .neighbourhood-text p {
+            color: var(--concrete);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .neighbourhood-list {
+            list-style: none;
+            margin-top: 2.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .neighbourhood-list li {
+            font-size: 0.85rem;
+            color: var(--concrete);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .neighbourhood-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--wood);
+        }
+
+        .neighbourhood-image {
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        /* Details Section */
+        .details {
+            background: var(--warm-white);
+            padding: 10rem 2rem;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 5rem auto 0;
+        }
+
+        .detail-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--soft-black);
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--warm-cream);
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--warm-cream);
+        }
+
+        .detail-item .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--concrete);
+        }
+
+        .detail-item .value {
+            color: var(--soft-black);
+            font-weight: 400;
+        }
+
+        /* Video Section */
+        .video-section {
+            background: var(--soft-black);
+            padding: 0;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: var(--wood);
+            padding: 10rem 2rem;
+            text-align: center;
+        }
+
+        .quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            color: var(--warm-white);
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.5;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .quote-attribution {
+            margin-top: 2.5rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--soft-black);
+            color: var(--warm-white);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        footer .address {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        footer .location {
+            font-size: 0.9rem;
+            color: var(--concrete-light);
+            margin-bottom: 3rem;
+        }
+
+        footer .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        footer .contact-info a {
+            color: var(--warm-white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        footer .contact-info a:hover {
+            opacity: 1;
+        }
+
+        footer .credits {
+            font-size: 0.7rem;
+            color: var(--concrete);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .dual-images {
+                grid-template-columns: 1fr;
+            }
+
+            .dual-images img {
+                aspect-ratio: 16/10;
+            }
+
+            .garden-feature {
+                grid-template-columns: 1fr;
+            }
+
+            .neighbourhood-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .neighbourhood-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            nav .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 5rem 1.5rem;
+            }
+
+            .garden-images {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .garden-images img {
+                aspect-ratio: 16/10;
+            }
+
+            .garden-feature-text {
+                padding: 3rem 2rem;
+            }
+
+            .details-grid {
+                gap: 3rem;
+            }
+
+            .neighbourhood-list {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item img {
+                height: 50vh;
+            }
+
+            footer .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+        /* Smooth fade-in animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Treford</div>
+        <ul class="nav-links">
+            <li><a href="#space">The Space</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#garden">Garden</a></li>
+            <li><a href="#neighbourhood">Neighbourhood</a></li>
+            <li><a href="#details">Details</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <img src="photos/01.jpg" alt="24 Treford Place" class="hero-image">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>24 Treford Place</h1>
+            <p class="tagline">Trinity-Bellwoods, Toronto</p>
+        </div>
+        <div class="scroll-indicator">
+            <span>Explore</span>
+        </div>
+    </section>
+
+    <!-- The Space -->
+    <section id="space" class="the-space">
+        <div class="section-intro fade-in">
+            <span class="section-label">The Space</span>
+            <h2 class="section-title">Where Industrial Spirit<br>Meets California Calm</h2>
+            <p class="section-text">
+                A rare west-end offering—a landmark urban villa that pairs an authentic industrial studio 
+                with a serene, California-inspired home. Soaring ceilings, polished concrete floors, and 
+                wall-to-wall windows create spaces that breathe with light and possibility.
+            </p>
+        </div>
+
+        <div class="space-grid">
+            <img src="photos/02.jpg" alt="Industrial living space" class="space-image-large fade-in">
+        </div>
+
+        <div class="space-details">
+            <div class="detail-block fade-in">
+                <h3>The Studio</h3>
+                <p>
+                    Dramatic and light-filled, the industrial volume features soaring ceilings, 
+                    polished concrete floors, and oversized windows framing the garden beyond. 
+                    A wood-burning fireplace anchors the living space, while a lofted office 
+                    offers an inspiring place to work or create.
+                </p>
+            </div>
+            <div class="detail-block fade-in">
+                <h3>The Kitchen</h3>
+                <p>
+                    A chef's dream overlooking a generous dining area for twelve. Open-concept 
+                    layout allows for effortless living and entertaining, where the boundary 
+                    between cooking and gathering dissolves into one continuous experience.
+                </p>
+            </div>
+            <div class="detail-block fade-in">
+                <h3>The Sanctuary</h3>
+                <p>
+                    Beyond the studio—connected seamlessly or accessed independently from 
+                    the garden—the home unfolds as a calm, light-washed retreat. Multiple 
+                    living areas and thoughtful separation provide flexibility for family 
+                    life or hosting guests.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dual Images -->
+    <div class="dual-images">
+        <img src="photos/03.jpg" alt="Interior detail" class="fade-in">
+        <img src="photos/04.jpg" alt="Interior detail" class="fade-in">
+    </div>
+
+    <!-- Full Bleed Image -->
+    <img src="photos/05.jpg" alt="Living space with fireplace" class="full-bleed">
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="video-container fade-in">
+            <div class="video-wrapper">
+                <iframe src="https://player.vimeo.com/video/1164964138?h=&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="gallery">
+        <div class="section-intro fade-in">
+            <span class="section-label">Gallery</span>
+            <h2 class="section-title">Every Angle,<br>A New Perspective</h2>
+        </div>
+        <div class="gallery-scroll">
+            <div class="gallery-item"><img src="photos/06.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/07.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/08.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/09.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/10.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/11.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/12.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/13.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/14.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/15.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/16.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/17.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/18.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/19.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/20.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/21.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/22.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/23.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/24.jpg" alt="Gallery image"></div>
+            <div class="gallery-item"><img src="photos/25.jpg" alt="Gallery image"></div>
+        </div>
+        <p class="gallery-hint">Scroll to explore →</p>
+    </section>
+
+    <!-- The Garden -->
+    <section id="garden" class="the-garden">
+        <div class="section-intro fade-in">
+            <span class="section-label">The Garden</span>
+            <h2 class="section-title">A Private Oasis<br>in the Heart of the City</h2>
+            <p class="section-text">
+                Wall-to-wall windows open to a beautifully enclosed garden complete with 
+                mature landscaping. Here, indoor and outdoor living merge seamlessly—
+                a California-inspired retreat tucked quietly away from the bustle of downtown.
+            </p>
+        </div>
+
+        <div class="garden-images">
+            <img src="photos/26.jpg" alt="Garden view" class="fade-in">
+            <img src="photos/27.jpg" alt="Garden detail" class="fade-in">
+            <img src="photos/28.jpg" alt="Garden" class="fade-in">
+        </div>
+
+        <div class="garden-feature">
+            <img src="photos/29.jpg" alt="Wood burning sauna">
+            <div class="garden-feature-text fade-in">
+                <h3>Wood-Burning Sauna</h3>
+                <p>
+                    Nestled within the mature garden, a traditional wood-burning sauna 
+                    offers a moment of ritual and restoration. Step from steam to 
+                    greenery—a wellness experience that honors both body and landscape.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="quote-section">
+        <blockquote class="quote fade-in">
+            "Tucked quietly away from the bustle of downtown, a one-of-a-kind 
+            live/work retreat where refined architecture meets the warmth of home."
+        </blockquote>
+    </section>
+
+    <!-- Neighbourhood -->
+    <section id="neighbourhood" class="neighbourhood">
+        <div class="neighbourhood-content">
+            <img src="photos/30.jpg" alt="Neighbourhood" class="neighbourhood-image fade-in">
+            <div class="neighbourhood-text fade-in">
+                <h2>Trinity-Bellwoods<br>& Little Italy</h2>
+                <p>
+                    Located between Treford Place and Mansfield Avenue via laneways, 
+                    this residence sits at the intersection of Toronto's most coveted 
+                    neighbourhoods. Steps to College Street, Ossington, Kensington Market, 
+                    and Trinity Bellwoods Park—yet remarkably peaceful and private.
+                </p>
+                <p>
+                    A singular opportunity to experience refined west-end living in 
+                    a truly distinctive architectural setting.
+                </p>
+                <ul class="neighbourhood-list">
+                    <li>Trinity Bellwoods Park</li>
+                    <li>College Street</li>
+                    <li>Ossington Strip</li>
+                    <li>Kensington Market</li>
+                    <li>Little Italy</li>
+                    <li>Public Transit</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Bleed Image 2 -->
+    <img src="photos/31.jpg" alt="Interior view" class="full-bleed">
+
+    <!-- Details -->
+    <section id="details" class="details">
+        <div class="section-intro fade-in">
+            <span class="section-label">Details</span>
+            <h2 class="section-title">The Particulars</h2>
+        </div>
+
+        <div class="details-grid">
+            <div class="detail-category fade-in">
+                <h3>The Home</h3>
+                <div class="detail-item">
+                    <span class="label">Type</span>
+                    <span class="value">Detached House</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Storeys</span>
+                    <span class="value">2</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Bedrooms</span>
+                    <span class="value">3</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Bathrooms</span>
+                    <span class="value">4</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Lot Size</span>
+                    <span class="value">70' × 103'</span>
+                </div>
+            </div>
+
+            <div class="detail-category fade-in">
+                <h3>Features</h3>
+                <div class="detail-item">
+                    <span class="label">Flooring</span>
+                    <span class="value">Polished Concrete, Hardwood</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Fireplaces</span>
+                    <span class="value">2 (Wood-burning)</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Heating</span>
+                    <span class="value">Forced Air + Radiant In-floor</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Cooling</span>
+                    <span class="value">Zoned Central Air</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Exterior</span>
+                    <span class="value">Stucco, Concrete Block</span>
+                </div>
+            </div>
+
+            <div class="detail-category fade-in">
+                <h3>Amenities</h3>
+                <div class="detail-item">
+                    <span class="label">Parking</span>
+                    <span class="value">3 Spaces + EV Charger</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Garden</span>
+                    <span class="value">Enclosed, Mature Landscaping</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Sauna</span>
+                    <span class="value">Wood-burning</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Office</span>
+                    <span class="value">Lofted, 37' × 16'</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Guest Suite</span>
+                    <span class="value">Independent Access</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="address">24 Treford Place</p>
+        <p class="location">Trinity-Bellwoods, Toronto</p>
+        <div class="contact-info">
+            <a href="tel:416-424-4910">416-424-4910</a>
+            <a href="mailto:info@heapsestrin.com">info@heapsestrin.com</a>
+            <a href="https://heapsestrin.com" target="_blank">heapsestrin.com</a>
+        </div>
+        <p class="credits">Photography by 1Space</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Horizontal gallery drag scroll
+        const galleryScroll = document.querySelector('.gallery-scroll');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        galleryScroll.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - galleryScroll.offsetLeft;
+            scrollLeft = galleryScroll.scrollLeft;
+        });
+
+        galleryScroll.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+
+        galleryScroll.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+
+        galleryScroll.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - galleryScroll.offsetLeft;
+            const walk = (x - startX) * 2;
+            galleryScroll.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
+</html>
